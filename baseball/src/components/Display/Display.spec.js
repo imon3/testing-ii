@@ -11,12 +11,22 @@ describe('<Display />', () => {
         const title = getByTestId('title');
         const balls = getByText(/balls/i);
         const strikes = getByText(/strikes/i);
-        const propsBalls = getByTestId('balls');
-        const propsStrikes = getByTestId('strikes');
+
 
         expect(title).toHaveTextContent(/display count/i);
         expect(balls).toHaveTextContent(/balls:/i);
         expect(strikes).toHaveTextContent(/strikes:/i);
+
+    })
+})
+
+describe('<Display />', () => {
+    it('should show the count of balls and strikes', () => {
+        const { getByTestId } = render(<Display display={{ balls: 0, strikes: 0 }} />);
+
+        const propsBalls = getByTestId('balls');
+        const propsStrikes = getByTestId('strikes');
+
         expect(propsBalls).toHaveTextContent('0');
         expect(propsStrikes).toHaveTextContent('0');
     })
